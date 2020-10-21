@@ -1,49 +1,38 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="q-ma-md ">
+    <div class="row q-col-gutter-sm">
+      <div class="col-3" v-for="(card , index) in cards" :key="index">
+        <report-card :report="reports[index]"/>
+        </div>
+    </div>
+    
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models'
-import ExampleComponent from 'components/CompositionComponent.vue'
-import { defineComponent, ref } from '@vue/composition-api'
-
+import { defineComponent } from '@vue/composition-api'
+import ReportCard from '../components/ReportCard.vue'
+import{ mapActions } from 'vuex' 
 export default defineComponent({
   name: 'PageIndex',
-  components: { ExampleComponent },
-  setup () {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ])
-    const meta = ref<Meta>({
-      totalCount: 1200
-    })
-    return { todos, meta }
+  components: { ReportCard },
+  data () {
+    return {
+      reports: [],
+      cards: [67293838, 215310605,202089847,192653904]
+    }
+  }, 
+  methods: {
+    ...mapActions('report', ['getReport'])
+  },
+  mounted () {
+    for(var i = 0; i<4; i++){
+    this.getReport(this.cards[i]).then(res => {
+          console.log(res.data.reports[0].data.totals[0].values)
+          this.reports.push(res.data.reports[0].data.totals[0].values)
+        })
+    }
+   
   }
 })
 </script>

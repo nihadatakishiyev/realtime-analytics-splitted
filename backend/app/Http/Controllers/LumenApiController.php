@@ -11,9 +11,10 @@ class LumenApiController extends Controller
 
         $res = Http::get('http://localhost/lumen/public/api/asanfinance');
 
-        if ($request->expectsJson())
+//        if ($request->expectsJson())
             return $res;
-        else return view('is\asanfinance')->with('query', $res);
+//        else return view('is\asanfinance')->with('query', $res);
+
 
     }
 }

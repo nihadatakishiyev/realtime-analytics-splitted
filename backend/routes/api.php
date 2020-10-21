@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\LumenApiController;
+use App\Http\Controllers\AnalyticsContrller;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
+Route::get('/lumen', [LumenApiController::class, 'requestAsanFinance']);
+Route::get('/services/{id}/realtime', [AnalyticsContrller::class, 'realtime']);
+Route::get('/services/{id}/report', [AnalyticsContrller::class, 'report']);
