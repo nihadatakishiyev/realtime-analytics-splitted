@@ -27,6 +27,7 @@ class AnalyticsHelper
         $analytics = new Google_Service_AnalyticsReporting($client);
         return $analytics;
     }
+
     public static function initAnalytics()
     {
 
