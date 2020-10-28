@@ -11,14 +11,19 @@
         <div class="row reportCardCellView">
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Aktiv İstifadəçilər</div>
-            <div id="1" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">Loading... &nbsp;</i></div>
+            <div id="1" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
+              <q-skeleton type="text" v-if="getValueOf(0)"/>
+              <span v-if="!getValueOf(0)"> {{ realtime[0] }}</span>
+              </i>
+            </div>
           </div>
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">İstifadəçilər</div>
             <div id="2" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
               <q-skeleton type="text" v-if="getValueOf(0)"/>
               <span v-if="!getValueOf(0)"> {{ report[0] }}</span>
-              &nbsp;</i></div>
+              </i>
+            </div>
           </div>
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Sessiyalar</div>
@@ -46,7 +51,7 @@
 <script>
 export default {
   name: 'ReportCard',
-  props: ['report'],
+  props: ['report', 'realtime'],
   data () {
     return {}
   },

@@ -2,7 +2,7 @@
   <q-page class="q-ma-md ">
     <div class="row q-col-gutter-sm">
       <div class="col-3" v-for="(card , index) in cards" :key="index">
-        <report-card :report="reportResult[index]"/>
+        <report-card :report="reportResult[index]" :realtime="realtimeResult[index]"/>
       </div>
     </div>
 
