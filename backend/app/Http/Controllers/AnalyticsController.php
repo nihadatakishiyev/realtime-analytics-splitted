@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AnalyticsHelper;
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller
@@ -17,11 +18,24 @@ class AnalyticsController extends Controller
 
     public function report($id){
         $response = AnalyticsHelper::getReport($this->reporting, $id);
-        return response()->json(["data"=>$response]);//
+        $info = Card::where('gid', $id)->get();
+        return response()->json([
+            "data"=>$response,
+            "info"=> $info
+        ]);
     }
 
     public function realtime($id){
         $res = $this->realtime->data_realtime->get("ga:".$id, "rt:activeUsers");
-        return response()->json(["data"=>$res]);
+        $info = Card::where('gid', $id)->get();
+        return response()->json([
+            "data"=>$res,
+            "info"=> $info
+        ]);
+    }
+
+    public function test($id){
+
+        return Card::where('gid', $id)->get();
     }
 }
