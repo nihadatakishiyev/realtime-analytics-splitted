@@ -5,7 +5,6 @@
         <report-card :report="reportResult[index]" :realtime="realtimeResult[index]"/>
       </div>
     </div>
-
   </q-page>
 </template>
 
@@ -31,18 +30,16 @@ export default defineComponent({
   mounted () {
     for (var i = 0; i < 4; i++) {
       this.getRealtime(this.cards[i]).then(res => {
-        console.log(res.data.data.rows[0])
-        this.realtimeResult.push(res.data.data.rows[0])
+        console.log(res.data.realtime.rows[0])
+        this.realtimeResult.push(res.data.realtime.rows[0])
       })
     }
-
     for (var i = 0; i < 4; i++) {
       this.getReport(this.cards[i]).then(res => {
         console.log(res.data.reports[0].data.totals[0].values)
         this.reportResult.push(res.data.reports[0].data.totals[0].values)
       })
     }
-
   }
 })
 </script>

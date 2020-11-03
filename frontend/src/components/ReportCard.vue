@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     getValueOf (val) {
-      return this.report === undefined ? true : false
+      return this.report === undefined
     },
     getPercentage (val) {
       return Math.round(parseFloat(val)) + '%'
