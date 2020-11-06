@@ -68,8 +68,16 @@ class AnalyticsController extends Controller
             "data"=>$res
         ]);
     }
+
+    public function bringSessionDuration($id){
+        $res = AnalyticsHelper::obtainSessionDuration($this->reporting, $id);
+
+        return response()->json([
+            "data"=>$res
+        ]);
+    }
 //
-//    public function test($id){
-//        $this->bringAgeStats($id);
-//    }
+    public function test($id){
+        $test = [1,2];
+    }
 }

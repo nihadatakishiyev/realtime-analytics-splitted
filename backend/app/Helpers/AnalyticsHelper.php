@@ -162,4 +162,37 @@ class AnalyticsHelper
         return $analytics->reports->batchGet($body);
     }
 
+    public static function obtainSessionDuration($analytics, $id){
+        $VIEW_ID = $id;
+
+        $first_dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $first_dateRange->setStartDate('14daysAgo');
+        $first_dateRange->setEndDate('8daysAgo');
+
+        $second_dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $second_dateRange->setStartDate('7daysAgo');
+        $second_dateRange->setEndDate('yesterday');
+
+        $metric = new Google_Service_AnalyticsReporting_Metric();
+        $metric->setExpression('ga:avgSessionDuration');
+//        $metric->setAlias('sessions');
+
+        $dimension = new \Google_Service_AnalyticsReporting_Dimension();
+        $dimension->setName('ga:date');
+
+        $request = new Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($VIEW_ID);
+        $request->setDateRanges(array($first_dateRange, $second_dateRange));
+        $request->setMetrics($metric);
+        $request->setDimensions($dimension);
+
+        $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests($request);
+        return $analytics->reports->batchGet( $body );
+    }
+
+    public static function queryBuilder($analytics, $id, array $dtr_count, $mtr_co ){
+        $VIEW_ID = $id;
+    }
+
 }

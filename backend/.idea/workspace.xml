@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98927453-c0a3-4aea-994f-b22edbc60a70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/AnalyticsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/AnalyticsHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/debug.log" afterDir="false" />
@@ -212,7 +213,7 @@
       <workItem from="1604066025556" duration="1108000" />
       <workItem from="1604312033118" duration="4295000" />
       <workItem from="1604466590880" duration="2501000" />
-      <workItem from="1604642146900" duration="10189000" />
+      <workItem from="1604642146900" duration="13514000" />
     </task>
     <servers />
   </component>
