@@ -46,7 +46,6 @@ class AnalyticsController extends Controller
     }
 
     public function test($id){
-//        print_r(Card::where('gid', $id));
         return Card::where('gid', $id)->get();
     }
 }
