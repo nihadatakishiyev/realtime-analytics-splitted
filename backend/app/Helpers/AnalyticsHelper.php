@@ -79,7 +79,7 @@ class AnalyticsHelper
         return $analytics->reports->batchGet( $body );
     }
 
-    public static function getTest($analytics, $id){
+    public static function obtainUserStats($analytics, $id){
         $VIEW_ID = $id;
 
         $first_dateRange = new Google_Service_AnalyticsReporting_DateRange();
@@ -105,6 +105,35 @@ class AnalyticsHelper
 
         $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests( array( $request) );
+        return $analytics->reports->batchGet( $body );
+    }
+
+    public static function obtainSessionStats($analytics, $id){
+        $VIEW_ID = $id;
+
+        $first_dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $first_dateRange->setStartDate('14daysAgo');
+        $first_dateRange->setEndDate('8daysAgo');
+
+        $second_dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $second_dateRange->setStartDate('7daysAgo');
+        $second_dateRange->setEndDate('yesterday');
+
+        $metric = new Google_Service_AnalyticsReporting_Metric();
+        $metric->setExpression('ga:sessions');
+        $metric->setAlias('sessions');
+
+        $dimension = new \Google_Service_AnalyticsReporting_Dimension();
+        $dimension->setName('ga:date');
+
+        $request = new Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($VIEW_ID);
+        $request->setDateRanges(array($first_dateRange, $second_dateRange));
+        $request->setMetrics(array($metric));
+        $request->setDimensions(array($dimension));
+
+        $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests(array($request));
         return $analytics->reports->batchGet( $body );
     }
 

@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/AnalyticsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/AnalyticsHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Card.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/debug.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +213,7 @@
       <workItem from="1604066025556" duration="1108000" />
       <workItem from="1604312033118" duration="4295000" />
       <workItem from="1604466590880" duration="2501000" />
-      <workItem from="1604642146900" duration="6350000" />
+      <workItem from="1604642146900" duration="8136000" />
     </task>
     <servers />
   </component>
@@ -286,6 +285,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="476" y="205" key="SettingsEditor/0.40.1920.1040/1920.0.1920.1040@0.40.1920.1040" timestamp="1603279490193" />
+    <state x="616" y="260" key="run.anything.popup" timestamp="1604661363196">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="616" y="260" key="run.anything.popup/0.40.1920.1040/1920.40.1920.1040@0.40.1920.1040" timestamp="1604661363196" />
     <state x="623" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1604646972106">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
