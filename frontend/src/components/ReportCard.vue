@@ -1,8 +1,9 @@
 <template>
   <div>
+<!--    {{ JSON.stringify(info).id }}-->
     <q-card class="my-card" style="border-left: solid red 4px">
       <q-card-section>
-        <q-btn flat color="primary" label="Egov" class="q-mr-sm" to="/egov"/>
+<!--        <q-btn flat color="primary" :label= "info.name" class="q-mr-sm" to="/egov"/>-->
         <q-avatar>
           <img src="https://cdn.quasar.dev/img/avatar.png">
         </q-avatar>
@@ -12,31 +13,32 @@
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Aktiv İstifadəçilər</div>
             <div id="1" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
-              <q-skeleton type="text" v-if="getValueOf(0)"/>
-              <span v-if="!getValueOf(0)"> {{ realtime[0] }}</span>
+              <q-skeleton type="text" v-if="checkUndefined(1)"/>
+              <span v-if="!checkUndefined(1)"> {{ realtime[0] }}</span>
+<!--              <span v-else>0</span>-->
               </i>
             </div>
           </div>
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">İstifadəçilər</div>
             <div id="2" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
-              <q-skeleton type="text" v-if="getValueOf(0)"/>
-              <span v-if="!getValueOf(0)"> {{ report[0] }}</span>
+              <q-skeleton type="text" v-if="checkUndefined(0)"/>
+              <span v-if="!checkUndefined(0)"> {{ report[0]}}</span>
               </i>
             </div>
           </div>
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Sessiyalar</div>
             <div id="3" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
-              <q-skeleton type="text" v-if="getValueOf(1)"/>
-              <span v-if="!getValueOf(1)">  {{ report[1] }}</span>
+              <q-skeleton type="text" v-if="checkUndefined(0)"/>
+              <span v-if="!checkUndefined(0)">  {{ report[1] }}</span>
               &nbsp;</i></div>
           </div>
           <div class="col-6 reportCardCell hoverable q-mr-2 q-pa-1">
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Bounce Rate</div>
             <div id="4" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
-              <q-skeleton type="text" v-if="getValueOf(2)"/>
-              <span v-if="!getValueOf(2)">  {{ getPercentage(report[2]) }}</span>
+              <q-skeleton type="text" v-if="checkUndefined(0)"/>
+              <span v-if="!checkUndefined(0)">  {{ getPercentage(report[2]) }}</span>
               &nbsp;</i></div>
           </div>
         </div>
@@ -51,13 +53,19 @@
 <script>
 export default {
   name: 'ReportCard',
-  props: ['report', 'realtime'],
+  props: ['report', 'realtime', 'info'],
   data () {
     return {}
   },
   methods: {
-    getValueOf (val) {
-      return this.report === undefined
+    checkUndefined: function (val) {
+      if (val === 0) {
+        return this.report === undefined
+      } else if (val === 1) {
+        return this.realtime === undefined
+      } else {
+        return this.info === undefined
+      }
     },
     getPercentage (val) {
       return Math.round(parseFloat(val)) + '%'

@@ -54,7 +54,7 @@ const linksData = [
     title: 'Docs',
     caption: 'quasar.dev',
     icon: 'school',
-    link: 'https://quasar.dev'
+    link: '/analytics/egov'
   },
   {
     title: 'Github',
