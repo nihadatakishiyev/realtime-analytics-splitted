@@ -46,6 +46,11 @@ class AnalyticsController extends Controller
     }
 
     public function test($id){
-        return Card::where('gid', $id)->get();
+        $res = AnalyticsHelper::getTest($this->reporting, $id);
+
+        return  response()->json([
+            "data"=>$res
+        ]);
+//        return Card::where('gid', $id)->get();
     }
 }
