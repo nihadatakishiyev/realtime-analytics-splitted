@@ -7,7 +7,14 @@
     <list default="true" id="98927453-c0a3-4aea-994f-b22edbc60a70" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnalyticsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/EssentialLink.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/EssentialLink.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ReportCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ReportCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store/realtime/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/realtime/actions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +214,12 @@
       <workItem from="1603691293110" duration="4663000" />
       <workItem from="1603785323014" duration="1882000" />
       <workItem from="1603863235537" duration="5288000" />
-      <workItem from="1603949293815" duration="5349000" />
+      <workItem from="1603949293815" duration="8102000" />
+      <workItem from="1604038650539" duration="3085000" />
+      <workItem from="1604066025556" duration="1108000" />
+      <workItem from="1604312033118" duration="4295000" />
+      <workItem from="1604466590880" duration="2501000" />
+      <workItem from="1604642146900" duration="1592000" />
     </task>
     <servers />
   </component>

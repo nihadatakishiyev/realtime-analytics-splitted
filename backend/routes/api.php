@@ -26,3 +26,4 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('/lumen', [LumenApiController::class, 'requestAsanFinance']);
 Route::get('/services/realtime/{id}', [AnalyticsController::class, 'realtime']);
 Route::get('/services/report/{id}', [AnalyticsController::class, 'report']);
+Route::get('/services/combined/{id}', [AnalyticsController::class, 'combined']);

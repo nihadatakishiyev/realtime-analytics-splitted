@@ -27,15 +27,26 @@ class AnalyticsController extends Controller
 
     public function realtime($id){
         $res = $this->realtime->data_realtime->get("ga:".$id, "rt:activeUsers");
-        $info = Card::where('gid', $id)->get();
+//        $info = Card::where('gid', $id)->get();
         return response()->json([
             "data"=>$res,
-            "info"=> $info
+//            "info"=> $info
+        ]);
+    }
+
+    public function combined($id){
+        $report = AnalyticsHelper::getReport($this->reporting, $id);
+        $realtime = $this->realtime->data_realtime->get("ga:".$id, "rt:activeUsers");
+        $info = Card::where('gid', $id)->get();
+        return response()->json([
+            "info"=> $info,
+            "report"=>$report,
+            "realtime" => $realtime
         ]);
     }
 
     public function test($id){
-
+//        print_r(Card::where('gid', $id));
         return Card::where('gid', $id)->get();
     }
 }
