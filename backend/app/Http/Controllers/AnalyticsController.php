@@ -61,11 +61,15 @@ class AnalyticsController extends Controller
         ]);
     }
 
-    public function test($id){
+    public function bringAgeStats($id){
         $res = AnalyticsHelper::obtainAgeStats($this->reporting, $id);
 
         return response()->json([
             "data"=>$res
         ]);
     }
+//
+//    public function test($id){
+//        $this->bringAgeStats($id);
+//    }
 }

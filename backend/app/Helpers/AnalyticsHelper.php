@@ -75,7 +75,7 @@ class AnalyticsHelper
         $request_session->setMetrics(array($users, $sessions,$bounce_rate));
 
         $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
-        $body->setReportRequests( array( $request_session) );
+        $body->setReportRequests(  $request_session );
         return $analytics->reports->batchGet( $body );
     }
 
@@ -100,11 +100,11 @@ class AnalyticsHelper
         $request = new Google_Service_AnalyticsReporting_ReportRequest();
         $request->setViewId($VIEW_ID);
         $request->setDateRanges(array($first_dateRange, $second_dateRange));
-        $request->setDimensions(array($dimension));
-        $request->setMetrics(array($metric));
+        $request->setDimensions($dimension);
+        $request->setMetrics($metric);
 
         $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
-        $body->setReportRequests( array( $request) );
+        $body->setReportRequests($request);
         return $analytics->reports->batchGet( $body );
     }
 
@@ -129,11 +129,11 @@ class AnalyticsHelper
         $request = new Google_Service_AnalyticsReporting_ReportRequest();
         $request->setViewId($VIEW_ID);
         $request->setDateRanges(array($first_dateRange, $second_dateRange));
-        $request->setMetrics(array($metric));
-        $request->setDimensions(array($dimension));
+        $request->setMetrics($metric);
+        $request->setDimensions($dimension);
 
         $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
-        $body->setReportRequests(array($request));
+        $body->setReportRequests($request);
         return $analytics->reports->batchGet( $body );
     }
 
