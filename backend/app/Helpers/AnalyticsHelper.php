@@ -137,4 +137,29 @@ class AnalyticsHelper
         return $analytics->reports->batchGet( $body );
     }
 
+    public static function obtainAgeStats($analytics, $id){
+        $VIEW_ID = $id;
+
+        $dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate('7daysAgo');
+        $dateRange->setEndDate('yesterday');
+
+        $metrics = new Google_Service_AnalyticsReporting_Metric();
+        $metrics->setExpression('ga:users');
+        $metrics->setAlias('users');
+
+        $dimension = new \Google_Service_Dfareporting_Dimension();
+        $dimension->setName('ga:userAgeBracket');
+
+        $request = new Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($VIEW_ID);
+        $request->setMetrics($metrics);
+        $request->setDimensions($dimension);
+        $request->setDateRanges($dateRange);
+
+        $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests($request);
+        return $analytics->reports->batchGet($body);
+    }
+
 }
