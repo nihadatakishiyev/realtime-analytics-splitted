@@ -93,7 +93,7 @@ class AnalyticsController extends Controller
         ]);
     }
 
-    public function test($id){
+    public function bringAcquisition($id){
         $res = AnalyticsHelper::obtainAcquisition($this->reporting, $id);
 
         return response()->json([
