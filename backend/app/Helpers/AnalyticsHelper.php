@@ -191,8 +191,62 @@ class AnalyticsHelper
         return $analytics->reports->batchGet( $body );
     }
 
+    public static function obtainUserNewOld($analytics, $id){
+        $VIEW_ID = $id;
+
+        $dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate('7daysAgo');
+        $dateRange->setEndDate('yesterday');
+
+        $first_metric = new Google_Service_AnalyticsReporting_Metric();
+        $first_metric->setExpression('ga:newUsers');
+
+        $second_metric = new Google_Service_AnalyticsReporting_Metric();
+        $second_metric->setExpression('ga:users');
+//        $metric->setAlias('ga');
+
+        $dimension = new \Google_Service_AnalyticsReporting_Dimension();
+        $dimension->setName('ga:date');
+
+        $request = new Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($VIEW_ID);
+        $request->setDateRanges($dateRange);
+        $request->setMetrics(array($first_metric, $second_metric));
+        $request->setDimensions($dimension);
+
+        $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests($request);
+        return $analytics->reports->batchGet( $body );
+    }
+
     public static function queryBuilder($analytics, $id, array $dtr_count, $mtr_co ){
         $VIEW_ID = $id;
+    }
+
+    public static function obtainUserGender($analytics, $id)
+    {
+        $VIEW_ID = $id;
+
+        $dateRange = new Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate('7daysAgo');
+        $dateRange->setEndDate('yesterday');
+
+        $metrics = new Google_Service_AnalyticsReporting_Metric();
+        $metrics->setExpression('ga:users');
+        $metrics->setAlias('users');
+
+        $dimension = new \Google_Service_Dfareporting_Dimension();
+        $dimension->setName('ga:userGender');
+
+        $request = new Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($VIEW_ID);
+        $request->setMetrics($metrics);
+        $request->setDimensions($dimension);
+        $request->setDateRanges($dateRange);
+
+        $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests($request);
+        return $analytics->reports->batchGet($body);
     }
 
 }

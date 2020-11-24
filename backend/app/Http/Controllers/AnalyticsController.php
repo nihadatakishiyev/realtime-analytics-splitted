@@ -76,8 +76,24 @@ class AnalyticsController extends Controller
             "data"=>$res
         ]);
     }
-//
-    public function test($id){
-        $test = [1,2];
+
+    public function bringUserNewOld($id){
+        $res = AnalyticsHelper::obtainUserNewOld($this->reporting, $id);
+
+        return response()->json([
+            "data" => $res
+        ]);
     }
+
+    public function test($id){
+        $res = AnalyticsHelper::obtainUserGender($this->reporting, $id);
+
+        return response()->json([
+            "data" => $res
+        ]);
+    }
+//
+//    public function test($id){
+//        $test = [1,2];
+//    }
 }
