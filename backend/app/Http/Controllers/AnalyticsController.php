@@ -85,8 +85,16 @@ class AnalyticsController extends Controller
         ]);
     }
 
-    public function test($id){
+    public function bringUserGender($id){
         $res = AnalyticsHelper::obtainUserGender($this->reporting, $id);
+
+        return response()->json([
+            "data" => $res
+        ]);
+    }
+
+    public function test($id){
+        $res = AnalyticsHelper::obtainAcquisition($this->reporting, $id);
 
         return response()->json([
             "data" => $res
