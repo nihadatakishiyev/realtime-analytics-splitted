@@ -1,18 +1,18 @@
 <template>
   <q-page class="q-ma-md ">
     <div class="row q-col-gutter-sm">
-      <div class="col-3" v-for="(card , index) in cards" :key="index">
-        <report-card :report="reportResult[index]" :realtime="realtimeResult[index]" :info="info[index]"/>
+      <div class="col-3" v-for="(card , index) in cards" :key="'ga:' +card">
+        <report-card :report="reportResult['ga:' +card]" :realtime="realtimeResult['ga:' +card]" :info="info['ga:' +card]"/>
       </div>
     </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import {defineComponent, set} from '@vue/composition-api'
 import ReportCard from '../components/ReportCard.vue'
 import { mapActions } from 'vuex'
-
+import Vue from 'vue'
 export default defineComponent({
   name: 'PageIndex',
   components: { ReportCard },
@@ -21,57 +21,52 @@ export default defineComponent({
       reportResult: [],
       realtimeResult: [],
       info: [],
+      dataInterval: null,
       cards: [67293838, 215310605, 202089847, 192653904]
     }
   },
   methods: {
     ...mapActions('report', ['getReport']),
     ...mapActions('realtime', ['getRealtime']),
-    // testFunc() {
-    //   for (var i = 0; i < 4; i++) {
-    //     this.getRealtime(this.cards[i]).then(res => {
-    //       this.realtimeResult.push(res.data.report.reports[0].data.totals[0].values)
-    //       this.real.push(res.data.realtime.rows[0])
-    //
-    //       console.log(this.realtimeResult)
-    //     })
-    //   }
-    //   this.reportResult = []
-    //   this.real = []
-    // },
     realFunc () {
-      for (var i = 0; i < 4; i++) {
-        this.getRealtime(this.cards[i]).then(res => {
+      this.cards.map(a => {
+        this.getRealtime(a).then(res => {
           // console.log(res.data.data.rows)
-          if (this.realtimeResult.length === 4) {
-            this.realtimeResult.shift()
-            this.realtimeResult.push(res.data.data.rows[0])
-          }
-          else {
-            this.realtimeResult.push(res.data.data.rows[0])
-          }
-          // console.log(this.realtimeResult)
-          console.log(this.realtimeResult)
+          this.realtimeResult['ga:' + a] = res.data.data.rows[0]
+
+          console.log(res)
+          this.$forceUpdate()
+
         })
-      }
+      })
     },
     reportFunc () {
-      for (let i = 0; i < 4; i++) {
-        this.getReport(this.cards[i]).then(res => {
-          this.reportResult.push(res.data.reports[0].data.totals[0].values)
-          this.info.push(res.info[0])
-          // console.log(typeof this.reportResult)
-          // console.log(res.data.reports[0].data.totals[0])
-          // console.log(res.info[0])
+      this.cards.map((a, index) => {
+        this.getReport(a).then(res => {
+
+          // this.set(this.reportResult, 'ga:'+a, res.data.reports[0].data.totals[0].values)
+          this.reportResult['ga:'+a] =res.data.reports[0].data.totals[0].values
+          console.log(this.reportResult)
+
+          this.info['ga:'+a] = res.info[0]
+          this.$forceUpdate()
         })
-      }
+      })
+      // for (let i = 0; i < 4; i++) {
+      //   var id =this.cards[i]
+      //
+      // }
     }
   },
   mounted () {
-    this.realFunc()
-    setInterval(this.realFunc, 20000)
-    // this.realFunc()
     this.reportFunc()
+    this.realFunc()
+    this.dataInterval = setInterval(() => {
+      this.realFunc()
+      if (this.dataInterval != null){
+        this.dataInterval = null
+      }
+    }, 20000)
   }
 })
 </script>

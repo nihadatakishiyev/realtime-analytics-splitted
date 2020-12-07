@@ -9,7 +9,8 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: '/stat/ga/:id', component: () => import('pages/StatPage.vue') }
     ]
   },
 
@@ -19,14 +20,6 @@ const routes: RouteConfig[] = [
     path: '*',
     component: () => import('pages/Error404.vue')
   },
-  {
-    path: '/analytics/egov',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: Egov }
-    ]
-
-  }
 ]
 
 export default routes

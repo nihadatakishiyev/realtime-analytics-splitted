@@ -14,7 +14,7 @@ module.exports = configure(function (ctx) {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: {
       tsCheckerConfig: {
-        eslint: true
+        eslint: false
       }
     },
 
@@ -27,7 +27,8 @@ module.exports = configure(function (ctx) {
     boot: [
       'composition-api',
       'i18n',
-      'axios'
+      'axios',
+      'Chartjs'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

@@ -14,7 +14,7 @@
             <div class="text-xs text-weight-bold text-green-13 text-uppercase q-mb-1">Aktiv İstifadəçilər</div>
             <div id="1" class="text-h5 q-mb-0 text-weight-bold text-blue-grey-8">
               <q-skeleton type="text" v-if="checkUndefined(1)"/>
-              <span v-if="!checkUndefined(1)"> {{ realtime[0] }}</span>
+              <span v-if="!checkUndefined(1)"> {{ realtime === null? 0 : realtime[0] }}</span>
 <!--              <span v-else>0</span>-->
               </i>
             </div>

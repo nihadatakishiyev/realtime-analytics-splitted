@@ -15,6 +15,8 @@
           Quasar App
         </q-toolbar-title>
 
+        <div><q-btn to="/stat/ga/egov">Egov</q-btn></div>
+        <div><q-btn to="/stat/ga/asan-login">Asan</q-btn></div>
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -51,16 +53,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
+    title: 'Egov',
     caption: 'quasar.dev',
     icon: 'school',
-    link: '/analytics/egov'
+    link: '/stat/ga/egov'
   },
   {
-    title: 'Github',
+    title: 'Asan',
     caption: 'github.com/quasarframework',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: '/stat/ga/asan-login'
   },
   {
     title: 'Discord Chat Channel',

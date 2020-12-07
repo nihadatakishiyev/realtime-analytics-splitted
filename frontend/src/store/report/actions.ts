@@ -6,7 +6,7 @@ const actions: ActionTree<ExampleStateInterface, StateInterface> = {
   getReport ({ commit }, payload) {
     console.log(payload)
     return new Promise((resolve, reject) => {
-      axios.get('http://127.0.0.1:8000/api/services/report/' + payload)
+      axios.get('http://localhost:8000/api/services/report/' + payload)
         .then((response: { data: unknown }) => {
           resolve(response.data)
         })
