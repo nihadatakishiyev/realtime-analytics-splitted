@@ -100,8 +100,21 @@ class AnalyticsController extends Controller
             "data" => $res
         ]);
     }
+    public function getCard($id){
+        $res =Card::where('href', '/ga/'.$id)->first();
+
+        return response()->json([
+            "data" => $res
+        ]);
+    }
 //
-//    public function test($id){
-//        $test = [1,2];
-//    }
+    public function getDeviceCategory($id){
+        $optParams = array(
+            'dimensions' => 'rt:deviceCategory');
+        $res = $this->realtime->data_realtime->get("ga:".$id, "rt:activeUsers", $optParams);
+
+        return response()->json([
+            "data" => $res
+        ]);
+    }
 }

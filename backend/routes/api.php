@@ -25,5 +25,8 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
 Route::get('/lumen', [LumenApiController::class, 'requestAsanFinance']);
 Route::get('/services/realtime/{id}', [AnalyticsController::class, 'realtime']);
+Route::get('/services/getDeviceCategory/{id}', [AnalyticsController::class, 'getDeviceCategory']);
+Route::get('/services/bringUserStats/{id}', [AnalyticsController::class, 'bringUserStats']);
+Route::get('/services/card/{id}', [AnalyticsController::class, 'getCard']);
 Route::get('/services/report/{id}', [AnalyticsController::class, 'report']);
 Route::get('/services/combined/{id}', [AnalyticsController::class, 'combined']);
